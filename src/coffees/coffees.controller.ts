@@ -9,7 +9,9 @@ export class CoffeesController {
   constructor(private readonly coffeesService: CoffeesService) {}
 
   @Get()
-  findAll(){
+  findAll(@Query() paginationQuesry){
+    const { limit, offset } = paginationQuesry;
+    console.log(`Limit: ${limit}, Offset: ${offset}`)
     return this.coffeesService.findAll();
   }
 
